@@ -1,6 +1,7 @@
+'use client';
 import React from 'react'
 
-const profilePage = () => {
+const ProfilePage = () => {
   return (
     <div>
       <h1>Profile Page</h1>
@@ -8,4 +9,4 @@ const profilePage = () => {
   )
 }
 
-export default profilePage;
+export default ProfilePage;
