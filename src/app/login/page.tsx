@@ -1,28 +1,31 @@
-"use client"
+"use client";
 import React,{useEffect} from 'react';
 import {useRouter} from 'next/navigation';
 import axios from 'axios';
+import { toast } from "react-hot-toast";
 
 
 const LoginPage = () => {
   const router = useRouter();
   const[user,setUser] = React.useState({
-    email:"",
-    password:"",
+    email:" ",
+    password:" ",
   });
 
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
 
-  const onLogin = async() =>{
+  const onLogin = async() => {
       try{
         setLoading(true);
         const response = await axios.post('/api/users/login',user);
         console.log("Login success", response.data);
-        router.push("/profile");
+        toast.success("Login success");
+        router.push('/profile');
       }
       catch(error:any){
          console.log("login failed",error.message);
+         toast.error(error.message);
       }
       finally{
         setLoading(false);
@@ -52,7 +55,7 @@ const LoginPage = () => {
       <button onClick={onLogin}>Login</button>
 
     </div>
-  )
+  );
 }
 
 export default LoginPage;
